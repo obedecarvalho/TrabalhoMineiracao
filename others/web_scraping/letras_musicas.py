@@ -2,8 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 
 #links = ['https://www.letras.mus.br/ana-vilela/trem-bala/']
-links = open('links_musicas.txt')
-out = open('letras_musicas.csv','a')
+links = open('links_musicas_obede.txt')
+out = open('letras_musicas_obede.csv','a')
 for url in links:
     print(url)
     response = requests.get(url.strip())
@@ -12,7 +12,7 @@ for url in links:
     titulo = titulo_artista.find('h1')
     artista = titulo_artista.find('a')
     letra = html_page.find('div','cnt-letra p402_premium')
-    if letra != null:
+    if letra != None:
         out.write("'" + titulo.get_text().replace("'"," ").lower() + "',")
         out.write("'" + artista.get_text().replace("'"," ").lower() + "',")
         letra_n = letra.prettify()
