@@ -1,10 +1,13 @@
 package exemplo;
 
 import weka.core.converters.ConverterUtils.DataSource;
+import weka.filters.unsupervised.attribute.StringToWordVector; //tf idf
 import weka.core.Instances;
 import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.classifiers.lazy.IBk;
+
+
 public class Exemplo {
     public static void main(String[] args) throws Exception {
         //------------------------------------------------------
