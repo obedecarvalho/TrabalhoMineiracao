@@ -13,7 +13,7 @@ public class Exemplo {
         //------------------------------------------------------
         // (1) importação da base de dados de treinamento
         //------------------------------------------------------
-         DataSource source = new DataSource("/home/obede/Documentos/eclipse-workspace/TrabalhoMineiracao/src/exemplo/weather.arff");
+         DataSource source = new DataSource("/home/otavio/eclipse-workspace/TrabalhoMineiracao/src/exemplo/weather.arff");
          Instances D = source.getDataSet();
          
          // 1.1 - espeficicação do atributo classe
