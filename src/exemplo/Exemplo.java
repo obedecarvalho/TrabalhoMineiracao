@@ -1,10 +1,15 @@
 package exemplo;
 
+import weka.core.converters.ArffSaver;
+import weka.core.converters.CSVLoader;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.filters.unsupervised.attribute.StringToWordVector; //tf idf
 import weka.core.Instances;
 import weka.core.DenseInstance;
 import weka.core.Instance;
+
+import java.io.File;
+
 import weka.classifiers.lazy.IBk;
 
 
@@ -13,8 +18,16 @@ public class Exemplo {
         //------------------------------------------------------
         // (1) importação da base de dados de treinamento
         //------------------------------------------------------
+    	CSVLoader loader = new CSVLoader();
+    	loader.setSource(new File("/home/otavio/eclipse-workspace/TrabalhoMineiracao/others/web_scraping/letras_musicas.csv"));
          DataSource source = new DataSource("/home/otavio/eclipse-workspace/TrabalhoMineiracao/src/exemplo/weather.arff");
+         Instances data = loader.getDataSet();
+         ArffSaver saver = new ArffSaver();
+         saver.setInstances(data);
+         saver.setFile(new File("/home/otavio/eclipse-workspace/TrabalhoMineiracao/others/web_scraping/letras_musicas.arff"));
          Instances D = source.getDataSet();
+         saver.setDestination(new File("/home/otavio/eclipse-workspace/TrabalhoMineiracao/others/web_scraping/letras_musicas.arff"));
+         saver.writeBatch();
          
          // 1.1 - espeficicação do atributo classe
          if (D.classIndex() == -1) {
