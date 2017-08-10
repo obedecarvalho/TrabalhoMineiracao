@@ -18,16 +18,16 @@ public class Exemplo {
         //------------------------------------------------------
         // (1) importação da base de dados de treinamento
         //------------------------------------------------------
-    	CSVLoader loader = new CSVLoader();
-    	loader.setSource(new File("/home/otavio/eclipse-workspace/TrabalhoMineiracao/others/web_scraping/letras_musicas.csv"));
-         DataSource source = new DataSource("/home/otavio/eclipse-workspace/TrabalhoMineiracao/src/exemplo/weather.arff");
-         Instances data = loader.getDataSet();
-         ArffSaver saver = new ArffSaver();
-         saver.setInstances(data);
-         saver.setFile(new File("/home/otavio/eclipse-workspace/TrabalhoMineiracao/others/web_scraping/letras_musicas.arff"));
+    	//CSVLoader loader = new CSVLoader();
+    	//loader.setSource(new File("/home/otavio/eclipse-workspace/TrabalhoMineiracao/others/web_scraping/letras_musicas.csv"));
+         DataSource source = new DataSource("/home/obede/Documentos/eclipse-workspace/TrabalhoMineiracao/src/exemplo/weather.arff");
+         //Instances data = loader.getDataSet();
+         //ArffSaver saver = new ArffSaver();
+         //saver.setInstances(data);
+         //saver.setFile(new File("/home/otavio/eclipse-workspace/TrabalhoMineiracao/others/web_scraping/letras_musicas.arff"));
          Instances D = source.getDataSet();
-         saver.setDestination(new File("/home/otavio/eclipse-workspace/TrabalhoMineiracao/others/web_scraping/letras_musicas.arff"));
-         saver.writeBatch();
+         //saver.setDestination(new File("/home/otavio/eclipse-workspace/TrabalhoMineiracao/others/web_scraping/letras_musicas.arff"));
+         //saver.writeBatch();
          
          // 1.1 - espeficicação do atributo classe
          if (D.classIndex() == -1) {
