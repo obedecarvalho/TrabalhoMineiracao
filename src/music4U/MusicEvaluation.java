@@ -9,6 +9,7 @@ public class MusicEvaluation {
 	private MusicFile classificar;
 	private RecomendationSystem rec;
 	private static MusicEvaluation INSTANCE;
+	private boolean alter;
 	
 	private MusicEvaluation(){
 		init();
@@ -26,13 +27,19 @@ public class MusicEvaluation {
 		classificar = new MusicFile(MusicFile.path2);
 		rec = new RecomendationSystem(RecomendationSystem.pathStopWords2, origem);
 		this.musics = rec.getListRecomendation(classificar);
+		alter = false;
 	}
 	
 	public ArrayList<MusicRecomended> getMusicsRecomended(){
+		if (alter){
+			this.musics = rec.getListRecomendation(classificar);
+			alter = false;
+		}
 		return musics;
 	}
 	
 	public void alterClass(MusicRecomended mr, String clazz){
+		alter = true;
 		mr.alterClass(clazz);
 		rec.updateClassify(mr.instance);
 		

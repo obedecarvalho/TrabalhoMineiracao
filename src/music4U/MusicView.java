@@ -1,6 +1,7 @@
 package music4U;
 
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -10,9 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import weka.core.Instance;
-
-public class MusicView extends JFrame { //implements ActionListener {
+public class MusicView extends JFrame{
 	
 	private static MusicView INSTANCE;
 	
@@ -28,7 +27,8 @@ public class MusicView extends JFrame { //implements ActionListener {
 	}
 	
 	public void draw(ArrayList<MusicRecomended> musics){
-		JPanel panel = new JPanel(new GridLayout(0, 3));
+		this.setLocationRelativeTo(null);
+		JPanel panel = new JPanel(new GridLayout(0, 4));
 		for (MusicRecomended i : musics){
 			panel.add(new JLabel(i.instance.stringValue(0)));
 			JButton gostei = new JButton("Gostei");
@@ -37,7 +37,12 @@ public class MusicView extends JFrame { //implements ActionListener {
 			JButton desgostei = new JButton("Desgostei");
 			desgostei.addActionListener(new Desgostei(i));
 			panel.add(desgostei);
+			panel.add(new JLabel(""+i.acuracy[0]));
 		}
+		panel.add(new JLabel());
+		JButton atualizar = new JButton("Atualizar");
+		atualizar.addActionListener(new Atualizar());
+		panel.add(atualizar);
 		panel.setSize(500, 500);
 		add(panel);
 		this.setSize(500, 500);
@@ -77,5 +82,14 @@ public class MusicView extends JFrame { //implements ActionListener {
 		}
 		
 	}
-
+	
+	public class Atualizar implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			MusicView mv = MusicView.getInstance();
+			mv.dispose();
+			INSTANCE = null;
+			Main.recomendar();
+		}		
+	}
 }
