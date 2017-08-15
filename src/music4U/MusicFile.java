@@ -45,11 +45,10 @@ public class MusicFile {
 		try {
 			ArffSaver saver = new ArffSaver();
 			saver.setInstances(instances);
-			saver.setFile(new File(path + "0"));
+			saver.setFile(new File(path));
 			//saver.setDestination(new File(path));
 			saver.writeBatch();
 		} catch (Exception e) {			
-			//System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 	}

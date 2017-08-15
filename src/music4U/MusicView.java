@@ -73,7 +73,7 @@ public class MusicView extends JFrame { //implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			MusicEvaluation me = MusicEvaluation.getInstance();
-			me.alterClass(mr, "true");
+			me.alterClass(mr, "false");
 		}
 		
 	}
